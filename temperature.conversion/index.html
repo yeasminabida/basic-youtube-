@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperature conversion</title>
+
+<style>
+    body{
+        font-family: 'Times New Roman', serif;
+        background-color: hsl(34, 30%, 56%);
+    }
+
+    form{
+        text-align: center; /*this will bring text to center*/
+        background-color: hsl(34, 35%, 62%);
+        max-width: 400px;
+        margin:auto; /*will bring the form to center*/
+        padding: 30px;  /*there will be spaces around the sides*/
+        border-radius: 12px;
+        box-shadow: 5px 5px 15px;
+        
+
+    
+    }
+#textbox{
+    width: 50%;
+    font-size:2em;
+    text-align: center;
+    border-radius: 4px;
+    margin-bottom: 15px;
+}
+label{
+    font-size:15px;
+    
+}
+button{
+    margin-top:15px;
+   background-color: white;
+   font-size:1em;
+   border:none;
+   padding:10px 15px;
+   border-radius: 5px;
+   cursor: pointer;
+}
+    button:hover{
+        background-color:rgb(231, 223, 223) ;
+    }
+
+#result{
+    font-size: 1.5em;
+    font-weight: bold;
+    
+}
+</style>
+
+
+
+</head>
+<body>
+    <form>
+        <h1>Temperature Conversion:</h1>
+        <input type="number" id="textbox" value="0"> <br>
+
+        <input type="radio" id="toF" name="unit">
+        <label for="toF">Celsius to Fahrenheit</label><br>
+
+        <input type="radio" id="toC" name="unit">
+        <label for="toC">Fahrenheit to Celsius</label><br>
+
+        <button type="button" onclick="convert()">Submit</button>
+        <p id="result">See a Unit</p>
+    </form>
+
+
+
+
+    <script>
+
+
+const textbox=document.getElementById("textbox");
+const toF=document.getElementById("toF");
+const toC=document.getElementById("toC");
+const result=document.getElementById("result");
+
+let temp;
+
+
+function convert(){
+if(toF.checked){
+    // result.textContent="you selected to Fahrenheit";
+
+    temp = Number(textbox.value);
+    temp = temp * 9 / 5 + 32;
+    result.textContent = temp.toFixed(1) + "°F";
+}
+
+else if(toC.checked){
+    // result.textContent="you selected to Celsius";
+
+    temp = Number(textbox.value);
+    temp = (temp - 32) * (5/9);
+    result.textContent = temp.toFixed(1) + "°C";
+}
+
+else{
+    result.textContent="select a unit";
+}
+}
+
+
+    </script>
+</body>
+</html>
