@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dice Roller</title>
+    <style>
+     
+        
+        #container{
+            font-family: Arial, Helvetica, sans-serif;
+            text-align: center;
+            font-size: 2rem;
+            font-weight: bold;
+          
+        }
+
+        button{
+            font-size: 1.5rem;
+            padding: 10px 15px;
+            border-radius: 12px;
+            border: none;
+            background-color: hsl(0, 0%, 0%);
+            color:white;
+            cursor:pointer;
+            font-weight: bolds;
+        }
+        button:hover{
+            background-color: hsl(0, 0%, 30%);
+        }
+        button:active{
+            background-color: hsl(0, 0%, 40%);
+        }
+
+        input{
+            font-size: 2rem;
+            width:150px;
+            text-align:center;
+            font-weight: bold;
+        }
+
+        #diceResult{
+            margin:25px;
+        }
+
+        #diceImages img{
+            width:150px;
+            margin: 8px;
+        }
+
+        
+
+
+    </style>
+</head>
+
+
+<body>
+    <div id="container">
+        <h1>Dice Roller</h1>
+        <label># of dice:</label>
+        <input type="number" id="numOfDice" value="1" min="1">
+        <button onclick="rollDice()">Roll Dice</button>
+
+        <div id="diceResult"></div>
+        <div id="diceImages"></div>
+    </div>
+
+
+
+
+
+    <script>
+function rollDice(){
+const numOfDice = document.getElementById("numOfDice").value;
+const diceResult = document.getElementById("diceResult");
+const diceImages = document.getElementById("diceImages");
+
+const values= [];
+const images= [];
+
+for(let i= 0; i < numOfDice; i++){
+ const value = Math.floor(Math.random() * 6) + 1;
+ values.push(value);
+ images.push(`<img src= "dice_images/${value}.png" alt="Dice ${value}">`);
+}
+
+diceResult.textContent = `dice: ${values.join(', ')}`;
+diceImages.innerHTML =images.join(' ');
+}
+
+
+
+    </script>
+</body>
+</html>
